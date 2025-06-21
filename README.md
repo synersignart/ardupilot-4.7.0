@@ -65,13 +65,13 @@ could not find program arm-none-eabi-ar error
     12    arm-none-eabi-size --version
     13    sudo apt-get install gcc-arm-none-eabi
 
-to build your target you must first assign a ID then create a folder of your target board
-
-board types.txt 
-ardupilot/Tools/AP_bootloader
+to build your target you must first assign a ID  You can Edit this file and add to the lists
 
 
-Folder of your Target board
+ardupilot/Tools/AP_bootloader/board types.txt 
+
+
+Then create a folder of your target Folder of your Target board
 ardupilot/libraries/AP_HAL_ChibiOS/hwdef
 
 
