@@ -45,23 +45,25 @@ Now you should be able to build with waf as described in BUILD.md. For example, 
           ./waf antennatracker
 
 if your controller needs a bootloader creation Please Run 
-        Tools/script/build_bootloaders MatekH743
+
+    8     Tools/script/build_bootloaders MatekH743
 
 Cleaning
 
 If there have been updates to some git submodules you may need to do a full clean build. To do that use:
 
     Should waf not configure pop up
-    8    python3 waf configure
+    
+    9    python3 waf configure
 
 # SHOULD THERE BE ERRORS
 
 could not find program arm-none-eabi-ar error
 
-    9    arm-none-eabi-cgg --version
-    10    arm-none-eabi-g++ --version
-    11    arm-none-eabi-size --version
-    12    sudo apt-get install gcc-arm-none-eabi
+    10    arm-none-eabi-cgg --version
+    11    arm-none-eabi-g++ --version
+    12    arm-none-eabi-size --version
+    13    sudo apt-get install gcc-arm-none-eabi
 
 to build your target you must first assign a ID then create a folder of your target board
 
