@@ -44,6 +44,9 @@ Now you should be able to build with waf as described in BUILD.md. For example, 
           ./waf blimp
           ./waf antennatracker
 
+if your controller needs a bootloader creation
+Please Run Tools/script/build_bootloaders MatekH743
+
 Cleaning
 
 If there have been updates to some git submodules you may need to do a full clean build. To do that use:
