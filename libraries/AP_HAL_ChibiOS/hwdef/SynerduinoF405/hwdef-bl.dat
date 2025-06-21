@@ -30,6 +30,6 @@ PA11 OTG_FS_DM OTG1
 PA12 OTG_FS_DP OTG1
 
 # Add CS pins to ensure they are high in bootloader
-PA4 AT7456E_CS CS 
-PB6 SDCARD_CS CS
+#PA4 AT7456E_CS CS 
+#PB6 SDCARD_CS CS
 PB12 IMU_CS CS
