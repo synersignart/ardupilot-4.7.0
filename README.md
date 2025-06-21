@@ -30,7 +30,7 @@ Then Log out and Log in again to save
 
 Now you should be able to build with waf as described in BUILD.md. For example, for a Copter build for the MatekH743 board:
 
-    7     Your Target boar
+    7     Your Target board Example MatekH743
 
           ./waf configure --board MatekH743 
 
