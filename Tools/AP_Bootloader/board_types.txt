@@ -462,8 +462,8 @@ AP_HW_VUAV-V7pro                     7100
 AP_HW_AEROFOX_H7                     7110
 
 # IDs 7120-7130 reserved for Synerflight
-AP_HW_SYNERDUINO_F405                     7120
-AP_HW_SYNERDUINO_H743                     7121
+AP_HW_SYNERDUINO_F405                7120
+AP_HW_SYNERDUINO_H743                7121
 
 # please fill gaps in the above ranges rather than adding past ID #7199
 
