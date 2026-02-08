@@ -109,6 +109,9 @@ AP_HW_MATEKF765_WING                  143
 AP_HW_JDMINIF405                      144
 AP_HW_KAKUTEF7_MINI                   145
 AP_HW_H757I_EVAL                      146
+AP_HW_WEACTSTM32H743                  147
+AP_HW_SYNERDUINOF405                  148
+AP_HW_SYNERDUINOH743                  149
 AP_HW_F4BY                             20 # value due to previous release by vendor
 AP_HW_MAZZYSTARDRONE                  188
 
