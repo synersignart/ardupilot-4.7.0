@@ -1,0 +1,173 @@
+# hw definition file for processing by chibios_pins.py
+# for WEACT STM32H743VIT6 (100pin)
+
+# MCU class and specific type
+MCU STM32H7xx STM32H743xx
+
+# board ID. See Tools/AP_Bootloader/board_types.txt
+APJ_BOARD_ID AP_HW_WEACTSTM32H743
+
+# crystal frequency, setup to use external oscillator
+OSCILLATOR_HZ 25000000
+
+# flash size
+FLASH_SIZE_KB 2048
+
+# bootloader takes first sector
+FLASH_RESERVE_START_KB 128
+
+# ChibiOS system timer
+STM32_ST_USE_TIMER 12
+define CH_CFG_ST_RESOLUTION 16
+
+# USB
+PA11 OTG_FS_DM OTG1
+PA12 OTG_FS_DP OTG1
+
+# pins for SWD debugging
+PA13 JTMS-SWDIO SWD
+PA14 JTCK-SWCLK SWD
+
+# SPI1 for IMU1 (BMI160)
+PB4 SPI1_MISO SPI1
+PD7 SPI1_MOSI SPI1
+PB3 SPI1_SCK SPI1
+PD6 IMU1_CS CS
+
+# one I2C bus
+I2C_ORDER I2C1
+
+# I2C1 for compass
+PB8 I2C1_SCL I2C1
+PB9 I2C1_SDA I2C1
+
+
+# ADC
+PC0 BATT_VOLTAGE_SENS ADC1 SCALE(1)
+PC1 BATT_CURRENT_SENS ADC1 SCALE(1)
+
+define HAL_BATT_MONITOR_DEFAULT 4
+define HAL_BATT_VOLT_PIN 10
+define HAL_BATT_CURR_PIN 11
+define HAL_BATT_VOLT_SCALE 11.0
+define HAL_BATT_CURR_SCALE 40.0
+
+PC5 RSSI_ADC ADC1
+define BOARD_RSSI_ANA_PIN 8
+
+# order of UARTs (and USB)
+SERIAL_ORDER OTG1 UART7 USART6 USART3
+
+# USART3 (GPS1)
+PD9 USART3_RX USART3
+PD8 USART3_TX USART3
+
+#?rpi02w rc in
+# UART7 telem1
+PE8  UART7_TX UART7
+PE7  UART7_RX UART7
+PE9  UART7_RTS UART7 LOW PULLDOWN
+PE10 UART7_CTS UART7
+
+# USART6 (RC input), SERIAL7
+PC7 TIM3_CH2 TIM3 RCININT PULLDOWN LOW
+PC6 USART6_TX USART6 NODMA
+
+# as an alternative config setup the RX6 pin as a uart. This allows
+# for bi-directional UART based receiver protocols such as FPort
+# without any extra hardware
+PC7 USART6_RX USART6 NODMA ALT(1)
+
+# CAN bus
+PD0 CAN1_RX CAN1
+PD1 CAN1_TX CAN1
+PD3 GPIO_CAN1_SILENT OUTPUT PUSHPULL SPEED_LOW LOW GPIO(70)
+
+# Motors
+PB0  TIM1_CH2N TIM1 PWM(1) GPIO(50)
+PB1  TIM1_CH3N TIM1 PWM(2) GPIO(51)
+PA0  TIM5_CH1  TIM5 PWM(3) GPIO(52)
+PA1  TIM5_CH2  TIM5 PWM(4) GPIO(53)
+PA2  TIM5_CH3  TIM5 PWM(5) GPIO(54)
+PA3  TIM5_CH4  TIM5 PWM(6) GPIO(55)
+PD14 TIM4_CH3  TIM4 PWM(5) GPIO(56)
+PD15 TIM4_CH4  TIM4 PWM(6) GPIO(57)
+
+# microSD support
+PC8 SDMMC1_D0 SDMMC1
+PC9 SDMMC1_D1 SDMMC1
+PC10 SDMMC1_D2 SDMMC1
+PC11 SDMMC1_D3 SDMMC1
+PC12 SDMMC1_CK SDMMC1
+PD2 SDMMC1_CMD SDMMC1
+
+
+#?? DMA
+DMA_NOSHARE SPI1*
+DMA_PRIORITY S*
+
+
+# use last 2 pages for flash storage
+# H743 has 16 pages of 128k each
+STORAGE_FLASH_PAGE 14
+define HAL_STORAGE_SIZE 32768
+
+# SPI Devices
+SPIDEV bmi160 SPI1 DEVID1 IMU1_CS  MODE3  1*MHZ  10*MHZ
+
+
+# no built-in compass, but probe the i2c bus for all possible
+# external compass types
+define ALLOW_ARM_NO_COMPASS
+define AP_COMPASS_PROBING_ENABLED 1
+define HAL_I2C_INTERNAL_MASK 0
+define HAL_COMPASS_AUTO_ROT_DEFAULT 2
+
+# one spi imu
+IMU BMI160 SPI:bmi160 ROTATION_ROLL_180_YAW_270
+
+# LEDs
+PD10 LED_RED OUTPUT OPENDRAIN GPIO(90) HIGH
+PE3 LED_BLUE OUTPUT OPENDRAIN GPIO(92) HIGH
+
+# setup for BoardLED2
+define AP_NOTIFY_GPIO_LED_2_ENABLED 1
+define HAL_GPIO_A_LED_PIN 90
+define HAL_GPIO_B_LED_PIN 92
+
+
+
+# enable FAT filesystem support (needs a microSD defined via SDMMC)
+define HAL_OS_FATFS_IO 1
+
+# build ABIN for flash-from-bootloader support:
+env BUILD_ABIN True
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
